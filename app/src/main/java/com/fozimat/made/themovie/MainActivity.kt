@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.fozimat.made.themovie.databinding.ActivityMainBinding
-import com.fozimat.made.themovie.ui.favorite.FavoriteFragment
-import com.fozimat.made.themovie.ui.home.HomeFragment
+import com.fozimat.made.themovie.favorite.FavoriteFragment
+import com.fozimat.made.themovie.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
