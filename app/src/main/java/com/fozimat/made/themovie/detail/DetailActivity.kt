@@ -1,8 +1,15 @@
 package com.fozimat.made.themovie.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.fozimat.made.themovie.R
+import com.fozimat.made.themovie.core.domain.model.Movie
+import com.fozimat.made.themovie.core.ui.ViewModelFactory
+import com.fozimat.made.themovie.core.utils.Constant.IMAGE_URL
+import com.fozimat.made.themovie.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
@@ -10,8 +17,60 @@ class DetailActivity : AppCompatActivity() {
         const val EXTRA_DATA = "extra_data"
     }
 
+    private lateinit var detailViewModel: DetailViewModel
+    private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+
+        val factory = ViewModelFactory.getInstance(this)
+        detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+
+        val detailMovie = intent.getParcelableExtra<Movie>(EXTRA_DATA)
+        showDetailMovie(detailMovie)
+    }
+
+    private fun showDetailMovie(detailMovie: Movie?) {
+        detailMovie.let {
+            supportActionBar?.title = detailMovie?.title
+            binding.content.tvDetailOverview.text = detailMovie?.overview
+            Glide.with(this@DetailActivity)
+                .load(IMAGE_URL + detailMovie?.poster_path)
+                .into(binding.ivDetailImage)
+
+            var statusFavorite = detailMovie?.isFavorite
+            if (statusFavorite != null) {
+                setStatusFavorite(statusFavorite)
+            }
+            binding.fab.setOnClickListener {
+                statusFavorite = !statusFavorite!!
+                if (detailMovie != null) {
+                    detailViewModel.setFavoriteMovie(detailMovie, statusFavorite!!)
+                }
+                setStatusFavorite(statusFavorite!!)
+            }
+        }
+    }
+
+    private fun setStatusFavorite(statusFavorite: Boolean) {
+        if (statusFavorite) {
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_favorite
+                )
+            )
+        } else {
+            binding.fab.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.ic_not_favorite
+                )
+            )
+        }
     }
 }

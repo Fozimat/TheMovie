@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.fozimat.made.themovie.R
 import com.fozimat.made.themovie.core.domain.model.Movie
 import com.fozimat.made.themovie.core.utils.Constant.IMAGE_URL
 import com.fozimat.made.themovie.databinding.ItemListMoviesBinding
@@ -38,17 +36,12 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesListViewHolder>() {
     inner class MoviesListViewHolder(private val binding: ItemListMoviesBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        var onItemClick: ((Movie) -> Unit)? = null
         fun bind(movie: Movie) {
             with(binding) {
                 tvItemTitle.text = movie.title
                 tvItemAverage.text = movie.vote_average.toString()
                 Glide.with(itemView.context)
                     .load(IMAGE_URL + movie.poster_path)
-                    .apply(
-                        RequestOptions.placeholderOf(R.drawable.ic_loading)
-                            .error(R.drawable.ic_error)
-                    )
                     .into(ivItemImage)
             }
         }
