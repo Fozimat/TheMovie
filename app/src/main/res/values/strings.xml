@@ -4,10 +4,6 @@
     <string name="menu_favorite">Favorite</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="title">Title</string>
-    <string name="vote_average">Vote Average</string>
-    <string name="image">Image</string>
     <string name="something_wrong">Something wrong</string>
     <string name="overview">Overview</string>
     <string name="empty_data">Empty Data</string>

@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.fozimat.made.core.domain.model.Movie
+import com.fozimat.made.core.utils.Constant.IMAGE_URL
 import com.fozimat.made.themovie.R
-import com.fozimat.made.themovie.core.domain.model.Movie
-import com.fozimat.made.themovie.core.utils.Constant.IMAGE_URL
 import com.fozimat.made.themovie.databinding.ActivityDetailBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

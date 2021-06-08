@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fozimat.made.themovie.core.ui.MovieAdapter
+import com.fozimat.made.core.ui.MovieAdapter
 import com.fozimat.made.themovie.databinding.FragmentFavoriteBinding
 import com.fozimat.made.themovie.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,11 +39,11 @@ class FavoriteFragment : Fragment() {
                 startActivity(intent)
             }
 
-            favoriteViewModel.favoriteMovie.observe(viewLifecycleOwner, { dataTourism ->
+            favoriteViewModel.favoriteMovie.observe(viewLifecycleOwner) { dataTourism ->
                 movieAdapter.setData(dataTourism)
                 binding.viewEmpty.root.visibility =
                     if (dataTourism.isNotEmpty()) View.GONE else View.VISIBLE
-            })
+            }
 
             with(binding.rvTourism) {
                 layoutManager = LinearLayoutManager(context)

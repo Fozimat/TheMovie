@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.fozimat.made.core.data.Resource
+import com.fozimat.made.core.ui.MovieAdapter
 import com.fozimat.made.themovie.R
-import com.fozimat.made.themovie.core.data.Resource
-import com.fozimat.made.themovie.core.ui.MovieAdapter
 import com.fozimat.made.themovie.databinding.FragmentHomeBinding
 import com.fozimat.made.themovie.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,12 +43,12 @@ class HomeFragment : Fragment() {
             homeViewModel.movie.observe(viewLifecycleOwner) { movie ->
                 if (movie != null) {
                     when (movie) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
+                        is Resource.Loading<*> -> binding.progressBar.visibility = View.VISIBLE
+                        is Resource.Success<*> -> {
                             binding.progressBar.visibility = View.GONE
                             movieAdapter.setData(movie.data)
                         }
-                        is Resource.Error -> {
+                        is Resource.Error<*> -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text =
