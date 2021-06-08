@@ -10,21 +10,18 @@ data class MovieResponse(
     @field:SerializedName("title")
     val title: String,
 
-    @field:SerializedName("genre_ids")
-    val genreIds: List<Int>,
-
     @field:SerializedName("overview")
     val overview: String,
 
     @field:SerializedName("vote_average")
-    val voteAverage: Double,
+    val vote_average: Double,
 
     @field:SerializedName("vote_count")
-    val voteCount: Int,
+    val vote_count: Int,
 
     @field:SerializedName("popularity")
     val popularity: Double,
 
     @field:SerializedName("poster_path")
-    val posterPath: String,
+    val poster_path: String,
 )

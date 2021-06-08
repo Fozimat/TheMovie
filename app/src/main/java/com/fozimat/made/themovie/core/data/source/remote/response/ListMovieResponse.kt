@@ -7,11 +7,11 @@ data class ListMovieResponse(
     val page: Int,
 
     @field:SerializedName("total_pages")
-    val totalPages: Int,
+    val total_pages: Int,
 
     @field:SerializedName("results")
     val results: List<MovieResponse>,
 
     @field:SerializedName("total_results")
-    val totalResults: Int
+    val total_results: Int
 )

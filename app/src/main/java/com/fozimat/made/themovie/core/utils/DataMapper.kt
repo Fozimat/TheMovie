@@ -9,13 +9,13 @@ object DataMapper {
         val movieList = ArrayList<MovieEntity>()
         input.map {
             val movie = MovieEntity(
-                it.id,
-                it.title,
-                it.overview,
-                it.voteAverage,
-                it.voteCount,
-                it.popularity,
-                it.posterPath,
+                id = it.id,
+                title = it.title,
+                overview = it.overview,
+                vote_average = it.vote_average,
+                vote_count = it.vote_count,
+                popularity = it.popularity,
+                poster_path = it.poster_path,
                 isFavorite = false
             )
             movieList.add(movie)
@@ -26,25 +26,25 @@ object DataMapper {
     fun mapEntitiesToDomain(input: List<MovieEntity>): List<Movie> =
         input.map {
             Movie(
-                it.id,
-                it.title,
-                it.overview,
-                it.vote_average,
-                it.vote_count,
-                it.popularity,
-                it.poster_path,
-                isFavorite = false
+                id = it.id,
+                title = it.title,
+                overview = it.overview,
+                vote_average = it.vote_average,
+                vote_count = it.vote_count,
+                popularity = it.popularity,
+                poster_path = it.poster_path,
+                isFavorite = it.isFavorite
             )
         }
 
     fun mapDomainToEntity(input: Movie) = MovieEntity(
-        input.id,
-        input.title,
-        input.overview,
-        input.vote_average,
-        input.vote_count,
-        input.popularity,
-        input.poster_path,
-        input.isFavorite
+        id = input.id,
+        title = input.title,
+        overview = input.overview,
+        vote_average = input.vote_average,
+        vote_count = input.vote_count,
+        popularity = input.popularity,
+        poster_path = input.poster_path,
+        isFavorite = input.isFavorite
     )
 }
