@@ -1,4 +1,4 @@
-package com.fozimat.made.themovie.favorite
+package com.fozimat.made.favorite
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fozimat.made.core.ui.MovieAdapter
+import com.fozimat.made.di.favoriteModule
 import com.fozimat.made.themovie.databinding.FragmentFavoriteBinding
 import com.fozimat.made.themovie.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class FavoriteFragment : Fragment() {
 
@@ -23,6 +25,7 @@ class FavoriteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        loadKoinModules(favoriteModule)
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }

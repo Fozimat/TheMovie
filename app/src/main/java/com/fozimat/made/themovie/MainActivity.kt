@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.fozimat.made.themovie.databinding.ActivityMainBinding
-import com.fozimat.made.themovie.favorite.FavoriteFragment
 import com.fozimat.made.themovie.home.HomeFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.navView.setNavigationItemSelectedListener(this)
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.nav_host_fragment, HomeFragment())
                 .commit()
@@ -45,18 +44,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var fragment: Fragment? = null
         var title = getString(R.string.app_name)
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.nav_home -> {
                 fragment = HomeFragment()
                 title = getString(R.string.app_name)
             }
             R.id.nav_favorite -> {
-                fragment = FavoriteFragment()
+                fragment = Class.forName("com.fozimat.made.favorite.FavoriteFragment").newInstance() as Fragment
                 title = getString(R.string.menu_favorite)
             }
         }
 
-        if(fragment != null) {
+        if (fragment != null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.nav_host_fragment, fragment)
                 .commit()

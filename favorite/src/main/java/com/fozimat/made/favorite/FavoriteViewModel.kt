@@ -1,4 +1,4 @@
-package com.fozimat.made.themovie.favorite
+package com.fozimat.made.favorite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
