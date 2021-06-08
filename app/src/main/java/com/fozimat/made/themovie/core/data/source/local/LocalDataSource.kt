@@ -3,6 +3,7 @@ package com.fozimat.made.themovie.core.data.source.local
 import androidx.lifecycle.LiveData
 import com.fozimat.made.themovie.core.data.source.local.entity.MovieEntity
 import com.fozimat.made.themovie.core.data.source.local.room.MovieDao
+import kotlinx.coroutines.flow.Flow
 
 class LocalDataSource private constructor(private val movieDao: MovieDao){
 
@@ -15,11 +16,11 @@ class LocalDataSource private constructor(private val movieDao: MovieDao){
             }
     }
 
-    fun getAllMovies(): LiveData<List<MovieEntity>> = movieDao.getAllMovies()
+    fun getAllMovies(): Flow<List<MovieEntity>> = movieDao.getAllMovies()
 
-    fun getFavoriteMovies(): LiveData<List<MovieEntity>> = movieDao.getFavoriteMovies()
+    fun getFavoriteMovies(): Flow<List<MovieEntity>> = movieDao.getFavoriteMovies()
 
-    fun insertMovie(movieList: List<MovieEntity>) = movieDao.insertMovie(movieList)
+    suspend fun insertMovie(movieList: List<MovieEntity>) = movieDao.insertMovie(movieList)
 
     fun setFavoriteMovie(movie: MovieEntity, newState: Boolean) {
         movie.isFavorite = newState
