@@ -21,6 +21,8 @@
 
     <style name="Theme.TheMovie.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.TheMovie.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.TheMovie.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.fozimat.made.themovie.detail
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -8,6 +9,7 @@ import com.fozimat.made.core.domain.model.Movie
 import com.fozimat.made.core.utils.Constant.IMAGE_URL
 import com.fozimat.made.themovie.R
 import com.fozimat.made.themovie.databinding.ActivityDetailBinding
+import es.dmoral.toasty.Toasty
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -48,6 +50,21 @@ class DetailActivity : AppCompatActivity() {
                     detailViewModel.setFavoriteMovie(detailMovie, statusFavorite!!)
                 }
                 setStatusFavorite(statusFavorite!!)
+                if (statusFavorite as Boolean) {
+                    Toasty.success(
+                        this@DetailActivity,
+                        "Data added successfully",
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                } else {
+                    Toasty.success(
+                        this@DetailActivity,
+                        "Data deleted successfully",
+                        Toast.LENGTH_SHORT,
+                        true
+                    ).show()
+                }
             }
         }
     }
