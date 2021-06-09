@@ -16,4 +16,7 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+
+    implementation "com.airbnb.android:lottie:$lottie_version"
+    implementation "com.github.GrenderG:Toasty:$toasty_version"
 }
