@@ -15,7 +15,6 @@
         android:layout_margin="@dimen/text_margin"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,6 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/vote_count"
             android:textSize="22sp" />
@@ -49,6 +49,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/popularity"
             android:textSize="22sp" />
@@ -64,6 +65,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/overview"
             android:textSize="22sp" />

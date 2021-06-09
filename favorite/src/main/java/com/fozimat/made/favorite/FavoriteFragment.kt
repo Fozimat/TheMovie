@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fozimat.made.core.ui.MovieAdapter
 import com.fozimat.made.di.favoriteModule
-import com.fozimat.made.themovie.databinding.FragmentFavoriteBinding
+import com.fozimat.made.favorite.databinding.FragmentFavoriteBinding
 import com.fozimat.made.themovie.detail.DetailActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules

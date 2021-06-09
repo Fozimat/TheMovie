@@ -33,21 +33,21 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun showDetailMovie(detailMovie: Movie?) {
-        detailMovie.let {
+        with(binding) {
             supportActionBar?.title = detailMovie?.title
-            binding.content.tvVoteAvg.text = detailMovie?.vote_average.toString()
-            binding.content.tvVoteCount.text = detailMovie?.vote_count.toString()
-            binding.content.tvPopular.text = detailMovie?.popularity.toString()
-            binding.content.tvDetailOverview.text = detailMovie?.overview
+            content.tvVoteAvg.text = detailMovie?.vote_average.toString()
+            content.tvVoteCount.text = detailMovie?.vote_count.toString()
+            content.tvPopular.text = detailMovie?.popularity.toString()
+            content.tvDetailOverview.text = detailMovie?.overview
             Glide.with(this@DetailActivity)
                 .load(IMAGE_URL + detailMovie?.poster_path)
-                .into(binding.ivDetailImage)
+                .into(ivDetailImage)
 
             var statusFavorite = detailMovie?.isFavorite
             if (statusFavorite != null) {
                 setStatusFavorite(statusFavorite)
             }
-            binding.fab.setOnClickListener {
+            fab.setOnClickListener {
                 statusFavorite = !statusFavorite!!
                 if (detailMovie != null) {
                     detailViewModel.setFavoriteMovie(detailMovie, statusFavorite!!)
