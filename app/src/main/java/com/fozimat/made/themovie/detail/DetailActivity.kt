@@ -35,6 +35,9 @@ class DetailActivity : AppCompatActivity() {
     private fun showDetailMovie(detailMovie: Movie?) {
         detailMovie.let {
             supportActionBar?.title = detailMovie?.title
+            binding.content.tvVoteAvg.text = detailMovie?.vote_average.toString()
+            binding.content.tvVoteCount.text = detailMovie?.vote_count.toString()
+            binding.content.tvPopular.text = detailMovie?.popularity.toString()
             binding.content.tvDetailOverview.text = detailMovie?.overview
             Glide.with(this@DetailActivity)
                 .load(IMAGE_URL + detailMovie?.poster_path)
