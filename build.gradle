@@ -30,6 +30,8 @@ buildscript {
     ext.lottie_version = "3.7.0"
     ext.toasty_version = "1.5.0"
 
+    ext.leak_canary_version = "2.7"
+
     repositories {
         google()
         mavenCentral()
