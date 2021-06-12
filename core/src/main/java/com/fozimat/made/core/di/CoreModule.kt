@@ -9,6 +9,7 @@ import com.fozimat.made.core.data.source.remote.network.ApiService
 import com.fozimat.made.core.domain.repository.IMovieRepository
 import com.fozimat.made.core.utils.AppExecutors
 import com.fozimat.made.core.utils.Constant
+import com.fozimat.made.core.utils.Constant.CIPHER
 import com.fozimat.made.core.utils.Constant.HOST_NAME
 import com.fozimat.made.core.utils.Constant.PIN_HOSTNAME_1
 import com.fozimat.made.core.utils.Constant.PIN_HOSTNAME_2
@@ -28,7 +29,7 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<MovieDatabase>().movieDao() }
     single {
-        val passphrase: ByteArray = SQLiteDatabase.getBytes("fozimat".toCharArray())
+        val passphrase: ByteArray = SQLiteDatabase.getBytes(CIPHER.toCharArray())
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),

@@ -7,6 +7,7 @@ object Constant {
     const val BASE_URL = "https://api.themoviedb.org/"
     const val IMAGE_URL = "https://www.themoviedb.org/t/p/w600_and_h600_bestv2"
     const val DATABASE_NAME = "Movie.db"
+    const val CIPHER = "fozimat"
     const val HOST_NAME = "api.themoviedb.org"
     const val PIN_HOSTNAME_1 = "sha256/+vqZVAzTqUP8BGkfl88yU7SQ3C8J2uNEa55B7RZjEg0="
     const val PIN_HOSTNAME_2 = "sha256/JSMzqOOrtyOT1kmau6zKhgT676hGgczD5VMdRMyJZFA="
