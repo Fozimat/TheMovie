@@ -25,31 +25,29 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         val detailMovie = intent.getParcelableExtra<Movie>(EXTRA_DATA)
-        showDetailMovie(detailMovie)
+        if (detailMovie != null) {
+            showDetailMovie(detailMovie)
+        }
     }
 
-    private fun showDetailMovie(detailMovie: Movie?) {
+    private fun showDetailMovie(detailMovie: Movie) {
         with(binding) {
-            supportActionBar?.title = detailMovie?.title
-            content.tvVoteAvg.text = detailMovie?.vote_average.toString()
-            content.tvVoteCount.text = detailMovie?.vote_count.toString()
-            content.tvPopular.text = detailMovie?.popularity.toString()
-            content.tvDetailOverview.text = detailMovie?.overview
+            supportActionBar?.title = detailMovie.title
+            content.tvVoteAvg.text = detailMovie.vote_average.toString()
+            content.tvVoteCount.text = detailMovie.vote_count.toString()
+            content.tvPopular.text = detailMovie.popularity.toString()
+            content.tvDetailOverview.text = detailMovie.overview
             Glide.with(this@DetailActivity)
-                .load(IMAGE_URL + detailMovie?.poster_path)
+                .load(IMAGE_URL + detailMovie.poster_path)
                 .into(ivDetailImage)
 
-            var statusFavorite = detailMovie?.isFavorite
-            if (statusFavorite != null) {
-                setStatusFavorite(statusFavorite)
-            }
+            var statusFavorite = detailMovie.isFavorite
+            setStatusFavorite(statusFavorite)
             fab.setOnClickListener {
-                statusFavorite = !statusFavorite!!
-                if (detailMovie != null) {
-                    detailViewModel.setFavoriteMovie(detailMovie, statusFavorite!!)
-                }
-                setStatusFavorite(statusFavorite!!)
-                if (statusFavorite as Boolean) {
+                statusFavorite = !statusFavorite
+                detailViewModel.setFavoriteMovie(detailMovie, statusFavorite)
+                setStatusFavorite(statusFavorite)
+                if (statusFavorite) {
                     Toasty.success(
                         this@DetailActivity,
                         "Data added successfully",
