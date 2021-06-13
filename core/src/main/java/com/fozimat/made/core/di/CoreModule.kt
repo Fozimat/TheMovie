@@ -8,7 +8,6 @@ import com.fozimat.made.core.data.source.local.room.MovieDatabase
 import com.fozimat.made.core.data.source.remote.RemoteDataSource
 import com.fozimat.made.core.data.source.remote.network.ApiService
 import com.fozimat.made.core.domain.repository.IMovieRepository
-import com.fozimat.made.core.utils.AppExecutors
 import com.fozimat.made.core.utils.Constant
 import com.fozimat.made.core.utils.Constant.CIPHER
 import com.fozimat.made.core.utils.Constant.HOST_NAME
@@ -72,7 +71,6 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    factory { AppExecutors() }
-    single<IMovieRepository> { MovieRepository(get(), get(), get()) }
+    single<IMovieRepository> { MovieRepository(get(), get()) }
 }
 

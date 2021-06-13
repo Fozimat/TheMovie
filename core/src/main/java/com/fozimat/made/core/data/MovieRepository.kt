@@ -6,15 +6,16 @@ import com.fozimat.made.core.data.source.remote.network.ApiResponse
 import com.fozimat.made.core.data.source.remote.response.MovieResponse
 import com.fozimat.made.core.domain.model.Movie
 import com.fozimat.made.core.domain.repository.IMovieRepository
-import com.fozimat.made.core.utils.AppExecutors
 import com.fozimat.made.core.utils.DataMapper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class MovieRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
 ) : IMovieRepository {
 
     override fun getAllMovies(): Flow<Resource<List<Movie>>> =
@@ -49,7 +50,8 @@ class MovieRepository(
 
     override fun setFavoriteMovie(movie: Movie, state: Boolean) {
         val movieEntity = DataMapper.mapDomainToEntity(movie)
-        appExecutors.diskIO().execute {
+
+        CoroutineScope(Dispatchers.IO).launch {
             localDataSource.setFavoriteMovie(movieEntity, state)
         }
     }
