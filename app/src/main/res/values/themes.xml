@@ -19,6 +19,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.TheMovie.Splash" parent="Theme.TheMovie.NoActionBar">
+        <item name="android:background">#d6887a</item>
+    </style>
+
     <style name="Theme.TheMovie.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.TheMovie.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
