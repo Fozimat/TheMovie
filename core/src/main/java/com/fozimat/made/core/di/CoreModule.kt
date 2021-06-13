@@ -1,6 +1,7 @@
 package com.fozimat.made.core.di
 
 import androidx.room.Room
+import com.fozimat.made.core.BuildConfig
 import com.fozimat.made.core.data.MovieRepository
 import com.fozimat.made.core.data.source.local.LocalDataSource
 import com.fozimat.made.core.data.source.local.room.MovieDatabase
@@ -50,8 +51,9 @@ val networkModule = module {
             .add(hostname, PIN_HOSTNAME_3)
             .add(hostname, PIN_HOSTNAME_4)
             .build()
-        OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        OkHttpClient.Builder().apply {
+            if(BuildConfig.DEBUG) addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        }
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
             .certificatePinner(certificatePinner)
